@@ -1,0 +1,41 @@
+#! /usr/bin/env bash
+
+panic()
+{
+	echo "ERROR: $@"
+	exit 1
+}
+
+cmd_dir=$(dirname "$0") || panic
+method=$1
+mesh=$2
+
+meshname=$(basename -- "$mesh")
+meshname="${meshname%.*}"
+
+host=$(hostname) || panic
+user=$(whoami) || panic
+tmp_dir="/tmp/wtlib-$user@$host-$$"
+
+mkdir -p "$tmp_dir" || panic
+
+noisy_mesh=$tmp_dir/noisy_${meshname}.off
+denoised_mesh=$tmp_dir/${method}_denoised_${meshname}.off
+
+$cmd_dir/wtl_add_noise_to_mesh \
+	-m 0.0 -d 0.005 \
+	-i $mesh \
+	-o $noisy_mesh \
+	|| panic
+
+$cmd_dir/wtl_wavelet_filter \
+  -m $method -l 3 -L \
+	-i $noisy_mesh \
+	-o $denoised_mesh \
+	|| panic
+
+meshlab $mesh
+meshlab $noisy_mesh
+meshlab $denoised_mesh
+
+rm -rf $tmp_dir

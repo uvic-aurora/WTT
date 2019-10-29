@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+set -euo pipefail
+BINARY_DIR="$1"
+
+if [[ $# -lt 3 ]]; then
+  echo "Not enough input"
+fi
+
+for ((i=2; i<=$#; ++i)); do
+    echo "[${!i}]:"
+    $BINARY_DIR/test/${!i} -d yes
+done

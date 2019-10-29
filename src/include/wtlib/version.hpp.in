@@ -1,0 +1,9 @@
+#ifndef WTLIB_VERSION_HPP
+#define WTLIB_VERSION_HPP
+
+#define wtlib_VERSION_NAME "@wtlib_VERSION@"
+#define wtlib_VERSION_MAJOR "@wtlib_VERSION_MAJOR@"
+#define wtlib_VERSION_MINOR "@wtlib_VERSION_MINOR@"
+#define wtlib_VERSION_PATCH "@wtlib_VERSION_PATCH@"
+
+#endif

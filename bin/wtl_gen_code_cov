@@ -1,0 +1,28 @@
+#! /usr/bin/env bash
+
+cmd_dir=$(dirname "$0") || exit 1
+source_dir=$cmd_dir/..
+build_dir="$cmd_dir/tmp_cmake"
+
+enable_coverage=1
+if [ $# -ge 1 ]; then
+	enable_coverage="$1"
+fi
+
+if [ -d "$build_dir" ]; then
+	rm -rf "$build_dir" || exit $?
+fi
+
+configure_options=()
+build_options=()
+if [ "$enable_coverage" -ne 0 ]; then
+	configure_options+=(-DENABLE_COVERAGE=true)
+	build_options+=(--target coverage)
+fi
+
+cmake -H"$source_dir" -B"$build_dir" "${configure_options[@]}" || exit $?
+cmake --build "$build_dir" "${build_options[@]}" -j $(nproc) || exit $?
+
+if [ "$enable_coverage" -ne 0 ]; then
+	firefox "$build_dir/coverage/index.html"
+fi
