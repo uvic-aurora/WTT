@@ -10,8 +10,8 @@ compiler:
     - clang
     - gcc
 
-#before_install:
-#    - build/travis/prebuild
+before_install:
+    - build/travis/prebuild
 
 #install:
 

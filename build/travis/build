@@ -1,5 +1,25 @@
 #! /usr/bin/env bash
 
+panic()
+{
+	echo "FATAL ERROR: $@"
+	exit 1
+}
+
+install_dir="/tmp/WTT"
+
+source_dir=$(pwd) || panic "cannot get current directory"
+build_dir="$source_dir/tmp"
+
+mkdir -p "$install_dir" || panic "cannot make installation directory"
+
 # Build the code...
+
+cmake -H"$source_dir" -B"$build_dir" -DCMAKE_INSTALL_PREFIX="$install_dir" || \
+  panic "cannot configure"
+
+cmake --build "$build_dir" || panic "cannot build"
+
+cmake --build "$build_dir" --target install || panic "cannot install"
 
 # Test the code...
