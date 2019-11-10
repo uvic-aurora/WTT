@@ -39,17 +39,20 @@ void apply_hard_thresholding(std::vector<std::vector<Vector3>>& coefs, double th
   std::cerr << i << " out of " << total << " coefficients are set to zero\n";
 }
 
-void apply_lowpass_filter(std::vector<std::vector<Vector3>>& coefs)
+void apply_lowpass_filter(std::vector<std::vector<Vector3>>& coefs, int level)
 {
-  for (std::vector<Vector3>& band_coefs : coefs)
+  for (int l = 0; l < coefs.size(); ++l)
   {
+    if (l + 1 <= level) {
+      continue;
+    }
+    std::vector<Vector3>& band_coefs = coefs[l];
     for (Vector3& v : band_coefs)
     {
       v = Vector3(0.0, 0.0, 0.0);
     }
   }
 }
-
 
 void apply_compressing(std::vector<std::vector<Vector3>>& coefs, double compression)
 {
@@ -109,10 +112,10 @@ These are accepted options)");
                                                "Without this option, program will read input mesh from standard input.")
     ("output-mesh,o", po::value<std::string>(), "Set the file path for the output mesh. "
                                                 "Without this option, program will output the mesh to standard output.")
-    ("threshold,t", po::value<double>(), "Set the filtering scheme to hard-thresholding. "
+    ("threshold,t", po::value<double>(), "Enable hard-thresholding on filtering the wavelet coefficients. "
                                          "Any wavelet coefficients whose L2 norms are less than the given threshold will be set to zero.")
-    ("lowpass-filter,L", "Set the filtering scheme to lowpass. All the wavelet coefficients will be set to zero. ")
-    ("compress,c", po::value<double>(), "Set the filtering scheme to compression. "
+    ("lowpass-filter,L", po::value<int>(), "Enable lowpass on filtering the wavelet coefficients. Wavelet coefficients above the given level will be set to zero. ")
+    ("compress,c", po::value<double>(), "Enable compression on filtering the wavelet coefficients. "
                                         "The wavelet coefficients whose magnitudes are in the top given percentage will be preserved, and the others are set to zero.");
 
 
@@ -149,9 +152,7 @@ These are accepted options)");
   std::string method;
   double threshold = 0.0;
   double compress = 100;
-  bool hard_thresholding = false;
-  bool lowpass_filtering = false;
-  bool compression = false;
+  int lowpass_level = -1;
 
   // Parse command line options
   if (vm.count("help"))
@@ -206,17 +207,11 @@ These are accepted options)");
 
   if (vm.count("threshold"))
   {
-    hard_thresholding = true;
-    lowpass_filtering = false;
-    compression = false;
     threshold = vm["threshold"].as<double>();
   }
   
   if (vm.count("compress"))
   {
-    compression = true;
-    hard_thresholding = false;
-    lowpass_filtering = false;
     compress = vm["compress"].as<double>();
     if (compress < 0 || compress > 100)
     {
@@ -228,9 +223,7 @@ These are accepted options)");
 
   if (vm.count("lowpass-filter"))
   {
-    lowpass_filtering = true;
-    hard_thresholding = false;
-    compression = false;
+    lowpass_level = vm["lowpass-filter"].as<int>();
   }
 
 
@@ -285,17 +278,28 @@ These are accepted options)");
     }
   }
 
-  if (lowpass_filtering)
-  {
-    apply_lowpass_filter(coefs);
+  std::function<void()> perform_lowpass = std::bind(&apply_lowpass_filter, std::ref(coefs), lowpass_level);
+  std::function<void()> perform_compress = std::bind(&apply_compressing, std::ref(coefs), compress);
+  std::function<void()> perform_threshold = std::bind(&apply_hard_thresholding, std::ref(coefs), threshold);
+
+  std::vector<std::function<void()>> actions;
+
+  for (auto& x : parsed.options) {
+    if (x.string_key == "compress") {
+      actions.push_back(perform_compress);
+    }
+
+    if (x.string_key == "threshold") {
+      actions.push_back(perform_threshold);
+    }
+
+    if (x.string_key == "lowpass-filter") {
+      actions.push_back(perform_lowpass);
+    }
   }
-  else if (compression)
-  {
-    apply_compressing(coefs, compress);
-  }
-  else
-  {
-    apply_hard_thresholding(coefs, threshold);
+
+  for (auto& f : actions) {
+    f();
   }
 
   if (method == "Butterfly")
