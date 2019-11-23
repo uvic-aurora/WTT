@@ -10,6 +10,7 @@ cmd_dir=$(dirname "$0") || panic
 method=$1
 mesh=$2
 
+
 meshname=$(basename -- "$mesh")
 meshname="${meshname%.*}"
 
@@ -22,13 +23,13 @@ mkdir -p "$tmp_dir" || panic
 noisy_mesh=$tmp_dir/noisy_${meshname}.off
 denoised_mesh=$tmp_dir/${method}_denoised_${meshname}.off
 
-$cmd_dir/wtl_add_noise_to_mesh \
+$cmd_dir/wtt_add_noise \
 	-m 0.0 -d 0.005 \
 	-i $mesh \
 	-o $noisy_mesh \
 	|| panic
 
-$cmd_dir/wtl_wavelet_filter \
+$cmd_dir/wtt_filter \
   -m $method -l 3 -L \
 	-i $noisy_mesh \
 	-o $denoised_mesh \

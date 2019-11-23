@@ -101,7 +101,7 @@ if (ENABLE_COVERAGE)
   set(COVERAGE_LCOV_EXCLUDES '${CMAKE_CURRENT_BINARY_DIR}/*')
   setup_target_for_coverage_lcov(
     NAME coverage
-    EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/bin/wtl_run_tests
+    EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/bin/wtt_run_tests
     EXECUTABLE_ARGS ${CMAKE_CURRENT_BINARY_DIR}/src ${CODE_COVERAGE_DEPENDENCY}
     LCOV_ARGS -q -rc lcov_branch_coverage=1 --no-external -d ${CMAKE_CURRENT_SOURCE_DIR}/src/include
     GENHTML_ARGS  --legend --branch-coverage --no-prefix
