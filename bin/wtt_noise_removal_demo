@@ -9,6 +9,7 @@ panic()
 cmd_dir=$(dirname "$0") || panic
 method=$1
 mesh=$2
+denoise_level=$3
 
 
 meshname=$(basename -- "$mesh")
@@ -30,7 +31,7 @@ $cmd_dir/wtt_add_noise \
 	|| panic
 
 $cmd_dir/wtt_filter \
-  -m $method -l 3 -L \
+  -m $method -l 3 -L "$denoise_level" \
 	-i $noisy_mesh \
 	-o $denoised_mesh \
 	|| panic

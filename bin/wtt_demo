@@ -38,8 +38,8 @@ if [ -z "$bin_dir" ]; then
 fi
 
 
-if [ ! -x "$bin_dir/wtl_wavelet_filter" ] || [ ! -x "$bin_dir/wtl_add_noise_to_mesh" ]; then
-	echo "Required executables not found, starting build..."
+if [ ! -x "$bin_dir/wtt_filter" ] || [ ! -x "$bin_dir/wtt_add_noise" ]; then
+	echo "Required executables not found, start build..."
 	source_dir=$abs_cmd_dir/..
 	build_dir=$source_dir/tmp/cmake
 	install_dir=$source_dir/tmp/install
@@ -53,7 +53,7 @@ echo "install_dir $install_dir"
 echo "bin_dir $bin_dir"
 echo "data_dir $data_dir"
 
-"$bin_dir"/wtt_noise_removal_demo Loop "$data_dir"/bunny.off
-"$bin_dir"/wtt_noise_removal_demo Butterfly "$data_dir"/bunny.off
-"$bin_dir"/wtt_noise_removal_demo Loop "$data_dir"/dragon.off
-"$bin_dir"/wtt_noise_removal_demo Butterfly "$data_dir"/dragon.off
+"$bin_dir"/wtt_noise_removal_demo Loop "$data_dir"/bunny.off 1
+"$bin_dir"/wtt_noise_removal_demo Butterfly "$data_dir"/bunny.off 1
+"$bin_dir"/wtt_noise_removal_demo Loop "$data_dir"/dragon.off 0
+"$bin_dir"/wtt_noise_removal_demo Butterfly "$data_dir"/dragon.off 1
