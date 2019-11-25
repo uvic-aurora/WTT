@@ -1,3 +1,15 @@
 #! /usr/bin/env bash
 
 # Perform any prebuild steps...
+
+# Install GMP, MPFR, and Boost
+set -e
+sudo apt update
+sudo apt install libgmp-dev libmpfr-dev libboost-all-dev libeigen3-dev cmake
+
+# Install CGAL
+git clone --depth=1 --branch releases/CGAL-5.0 https://github.com/CGAL/cgal CGAL
+cd CGAL
+cmake -H. -Btmp_cmake
+sudo cmake --build tmp_cmake --target install
+set +e
