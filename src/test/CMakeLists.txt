@@ -97,6 +97,6 @@ set(TEST_SUITES ptq_classify_vertices_test
 set(CODE_COVERAGE_DEPENDENCY ${TEST_SUITES} PARENT_SCOPE)
 
 add_custom_target(run_tests
-  COMMAND ${CMAKE_SOURCE_DIR}/bin/wtl_run_tests ${CMAKE_BINARY_DIR}/src ${TEST_SUITES}
+  COMMAND ${CMAKE_SOURCE_DIR}/bin/wtt_run_tests ${CMAKE_BINARY_DIR}/src ${TEST_SUITES}
   DEPENDS ${TEST_SUITES})
   

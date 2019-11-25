@@ -1,5 +1,6 @@
 #! /usr/bin/env bash
 
+set -e
 panic()
 {
 	echo "FATAL ERROR: $@"
@@ -13,13 +14,55 @@ build_dir="$source_dir/tmp"
 
 mkdir -p "$install_dir" || panic "cannot make installation directory"
 
-# Build the code...
+# Build the code and run tests
+cmake -H"$source_dir" -B"$build_dir" -DCMAKE_BUILD_TYPE=Debug -DENABLE_TEST=ON
+cmake --build "$build_dir" --target run_tests
 
-cmake -H"$source_dir" -B"$build_dir" -DCMAKE_INSTALL_PREFIX="$install_dir" || \
+# Build and install
+cmake -H"$source_dir" -B"$build_dir" -DCMAKE_INSTALL_PREFIX="$install_dir" -DCMAKE_BUILD_TYPE=Release -DENABLE_TEST=OFF || \
   panic "cannot configure"
 
-cmake --build "$build_dir" || panic "cannot build"
+cmake --build "$build_dir" --clean-first || panic "cannot build"
 
 cmake --build "$build_dir" --target install || panic "cannot install"
 
-# Test the code...
+# Check if files are installed
+wtt_include_prefix="$install_dir/include/wtlib"
+wtt_includes=("mesh_types.hpp" \
+              "wavelet_operations.hpp" \
+							"wavelet_mesh_operations.hpp" \
+							"version.hpp" \
+							"loop_wavelet_transform.hpp" \
+							"butterfly_wavelet_transform.hpp" \
+							"ptq_impl/loop_math_utils.hpp" \
+							"ptq_impl/subdivision_modifier.hpp" \
+							"ptq_impl/loop_wavelet_operations.hpp" \
+							"ptq_impl/mesh_vertex_info.hpp" \
+							"ptq_impl/vertex_classification_mirror_mesh.hpp" \
+							"ptq_impl/vertex_classification.hpp" \
+							"ptq_impl/in_place_list_iterator_hash.hpp" \
+							"ptq_impl/butterfly_wavelet_operations.hpp")
+wtt_bins=("bin/wtt_add_noise" \
+          "bin/wtt_fwt" \
+					"bin/wtt_iwt" \
+					"bin/wtt_demo" \
+					"bin/wtt_noise_removal_demo" \
+					"bin/wtt_filter")
+
+for include in "${wtt_includes[@]}" ; do
+	if [ ! -f "$wtt_include_prefix/$include" ];then
+		echo "$include does not exist."
+		exit 1
+	else
+		echo "$include installed."
+	fi
+done
+
+for bin in "${wtt_bins[@]}" ; do
+	if [ ! -x "$install_dir/$bin" ];then
+		echo "$bin does not exist."
+		exit 1
+	else
+		echo "$bin installed."
+	fi
+done

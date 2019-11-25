@@ -711,7 +711,6 @@ void PTQ_classify_vertices<Mesh, Mesh_ops>::sort_vertices(
                 };
 
   // First sort base resolution vertices
-  assert(vertices.begin() == Vitr {bands[0]});
   assert(bands[0] == &vertices[0]);
   std::sort(bands[0],
             bands[1], 
