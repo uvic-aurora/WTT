@@ -114,6 +114,16 @@ add_subdirectory(src/include)
 add_subdirectory(src/app)
 add_subdirectory(bin)
 
+# Install CMake config
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/wtlib-config.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/cmake/wtlib-config.cmake"
+  @ONLY
+)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cmake/wtlib-config.cmake
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/wtlib
+        )
+
 # Install data files
 install(FILES ${CMAKE_SOURCE_DIR}/data/sorted_subdivision_meshes/bunny.off
               ${CMAKE_SOURCE_DIR}/data/sorted_subdivision_meshes/dragon.off

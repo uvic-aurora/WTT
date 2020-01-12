@@ -1,0 +1,11 @@
+get_filename_component(PACKAGE_PREFIX_DIR "${CMAKE_CURRENT_LIST_DIR}/../../" ABSOLUTE)
+set(wtlib_FOUND 1)
+set(wtlib_DEFINITIONS "")
+set(wtlib_INCLUDE_DIR  "${PACKAGE_PREFIX_DIR}/include")
+set(wtlib_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include")
+set(wtlib_ROOT_DIR     "${PACKAGE_PREFIX_DIR}")
+
+set(wtlib_VERSION_STRING "@wtlib_VERSION@")
+set(wtlib_VERSION_MAJOR  "@wtlib_VERSION_MAJOR@")
+set(wtlib_VERSION_MINOR  "@wtlib_VERSION_MINOR@")
+set(wtlib_VERSION_PATCH  "@wtlib_VERSION_PATCH@")
