@@ -1,0 +1,9 @@
+QPushButton {
+  border: none;
+  background-color: none;
+}
+
+QLabel {
+  border: none;
+  background-color: none;
+}

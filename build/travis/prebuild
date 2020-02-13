@@ -10,10 +10,11 @@ osx)
   brew install eigen 
   brew install cmake || brew upgrade cmake
   brew install boost || brew upgrade boost
+  brew install qt5 || brew upgrade qt5
   ;;
 linux)
   sudo apt update
-  sudo apt install libgmp-dev libmpfr-dev libboost-all-dev libeigen3-dev cmake
+  sudo apt install libgmp-dev libmpfr-dev libboost-all-dev libeigen3-dev cmake qt5-default libqt5opengl5-dev
   ;;
 *)
   ;;

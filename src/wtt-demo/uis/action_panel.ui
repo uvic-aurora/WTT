@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="5.0">
+  <class>ActionPanel</class>
+  <widget class="QWidget" name="action_panel">
+    <layout class="QHBoxLayout" name="h_layout">
+      <!-- <property name="alignment">
+        <enum>Qt::AlignHCenter</enum>
+      </property> -->
+      <item>
+        <spacer name="spacer_0">
+          <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+          </property>
+        </spacer>
+      </item>
+      <item>
+        <widget class="QPushButton" name="openfile_button">
+          <layout class="QVBoxLayout">
+            <item>
+              <widget class="QLabel" name="openfile_icon">  
+              </widget>
+            </item>
+          </layout>
+        </widget>
+      </item>
+      <item>
+        <widget class="QPushButton" name="reset_button">
+          <layout class="QVBoxLayout">
+            <item>
+              <widget class="QLabel" name="reset_icon">  
+              </widget>
+            </item>
+          </layout>
+        </widget>
+      </item>
+      <item>
+        <spacer name="spacer_1">
+          <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+          </property>
+        </spacer>
+      </item>
+      <item>
+        <widget class="QPushButton" name="type_button">
+          <layout class="QVBoxLayout">
+            <item>
+              <widget class="QLabel" name="type_icon">
+                <layout class="QVBoxLayout">
+                  <item>
+                    <widget class="QLabel" name="type_text">
+                      <property name="minimumSize">
+                        <size>
+                          <width>60</width>
+                          <height>60</height>
+                        </size>
+                      </property>
+                    </widget>
+                  </item>
+                </layout>
+              </widget>
+            </item>
+          </layout>
+        </widget>
+      </item>
+      <item>
+        <widget class="QPushButton" name="iwt_button">
+          <layout class="QVBoxLayout">
+            <item>
+              <widget class="QLabel" name="iwt_icon">  
+              </widget>
+            </item>
+          </layout>
+        </widget>
+      </item>
+      <item>
+        <widget class="QPushButton" name="fwt_button">
+          <layout class="QVBoxLayout">
+            <item>
+              <widget class="QLabel" name="fwt_icon">  
+              </widget>
+            </item>
+          </layout>
+        </widget>
+      </item>
+      <item>
+        <spacer name="spacer_2">
+          <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+          </property>
+        </spacer>
+      </item>
+      <item>
+        <widget class="QPushButton" name="compress_button">
+          <layout class="QVBoxLayout">
+            <item>
+              <widget class="QLabel" name="compress_icon">  
+              </widget>
+            </item>
+          </layout>
+        </widget>
+      </item>
+      <item>
+        <widget class="QPushButton" name="denoise_button">
+          <layout class="QVBoxLayout">
+            <item>
+              <widget class="QLabel" name="denoise_icon">  
+              </widget>
+            </item>
+          </layout>
+        </widget>
+      </item>
+      <item>
+        <spacer name="spacer_3">
+          <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+          </property>
+        </spacer>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault margin="0" spacing="20" />
+  <resources/>
+  <connections/>
+</ui>

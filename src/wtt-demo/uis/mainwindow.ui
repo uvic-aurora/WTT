@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="5.0">
+  <class>MainWindow</class>
+  <widget class="QMainWindow" name="main_window">
+    <property name="minimumSize">
+      <size>
+        <width>0</width>
+        <height>0</height>
+      </size>
+    </property>
+    <property name="maximumSize">
+      <size>
+        <width>16777215</width>
+        <height>16777215</height>
+      </size>
+    </property>
+    <widget class="QWidget" name="main_widget">
+      <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+        </sizepolicy>
+      </property>
+      <layout class="QHBoxLayout">
+        <item>
+          <layout class="QVBoxLayout" name="main_layout">
+          </layout>
+        </item>
+      </layout>
+    </widget>
+  </widget>
+  <layoutdefault margin="0" spacing="0" />
+  <resources/>
+  <connections/>
+</ui>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="5.0">
+ <class>ControlPanel</class>
+ <widget class="QWidget" name="control_panel">
+ </widget>
+ <layoutdefault spacing="20" margin="0"/>
+ <resources/>
+ <connections/>
+</ui>

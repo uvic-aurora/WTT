@@ -1,0 +1,39 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+  <file>shader/triangle_mesh.vertex</file>
+  <file>shader/triangle_mesh.fragment</file>
+  <file>images/shrink.png</file>
+  <file>images/folder.png</file>
+  <file>images/forward.png</file>
+  <file>images/backward.png</file>
+  <file>images/reset.png</file>
+  <file>images/sort.png</file>
+  <file>images/topology.png</file>
+  <file>images/equalizer.png</file>
+  <file>images/processing.gif</file>
+  <file>images/loading.gif</file>
+  <file>images/add.png</file>
+  <file>images/minus.png</file>
+  <file>images/circle.png</file>
+  <file>images/smooth_shading.png</file>
+  <file>images/flat_shading.png</file>
+  <file>images/reset_cam.png</file>
+  <file>images/vertex.png</file>
+  <file>images/triangle.png</file>
+  <file>images/butterfly.png</file>
+  <file>images/loop.png</file>
+  <file>images/camera.png</file>
+  <file>mesh/dragon_1000.off</file>
+  <file>mesh/bunny_1000.off</file>
+  <file>mesh/cube.off</file>
+  <file>mesh/tetrahedron_base.off</file>
+  <file>mesh/torus_base.off</file>
+  <file>qss/action_panel.qss</file>
+  <file>qss/message_box.qss</file>
+  <file>qss/integer_setter.qss</file>
+  <file>qss/input_prop.qss</file>
+  <file>qss/proc.qss</file>
+  <file>qss/wt_type_setter.qss</file>
+  <file>qss/glview_control_panel.qss</file>
+</qresource>
+</RCC>

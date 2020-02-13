@@ -1,0 +1,60 @@
+QWidget#msg_body
+{
+  background-color: #242424;
+}
+
+QPushButton#minus_button
+{
+  border: none;
+  background-color: none;
+}
+QPushButton#plus_button
+{
+  border: none;
+  background-color: none;
+}
+
+QLabel#minus_icon,plus_icon
+{
+  border: none;
+}
+
+QLabel#value_label {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 20pt;
+  border: none;
+  text-align: center;
+  color:#DFDFDF;
+}
+
+QLabel#description
+{
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14pt;
+  border: none;
+  text-align: center;
+  color:#DFDFDF;
+}
+
+QPushButton#accept_button
+{
+  font-family: Roboto;
+  font-weight: 450;
+  font-size: 12pt;
+  border: none;
+  background-color: #3F51B5;
+  color:#FFFFFF;
+}
+
+QPushButton#reject_button
+{
+  font-family: Roboto;
+  font-weight: 450;
+  font-size: 12pt;
+  border: none;
+  background-color: none;
+  color:#FFFFFF;
+}
+

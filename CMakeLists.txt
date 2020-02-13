@@ -41,6 +41,7 @@ option(ENABLE_CUSTOM_MESH "Enable custom mesh" ON)
 option(ENABLE_TEST "Enable test" OFF)
 option(ENABLE_UNORDERED_MAP "Enable unordered map" ON)
 option(DISABLE_ROUNDING_CHECK "Disable rounding check" OFF)
+option(BUILD_DEMO "Build demo" ON)
 
 if (ENABLE_COVERAGE)
   set(CMAKE_BUILD_TYPE Debug)
@@ -112,6 +113,9 @@ endif()
 
 add_subdirectory(src/include)
 add_subdirectory(src/app)
+if (BUILD_DEMO)
+  add_subdirectory(src/wtt-demo)
+endif()
 add_subdirectory(bin)
 
 # Install CMake config

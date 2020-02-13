@@ -1,0 +1,7 @@
+QWidget#msg_body {
+  background-color: none;
+}
+
+QLabel{
+  background-color: none;
+}

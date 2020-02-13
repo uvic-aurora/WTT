@@ -1,13 +1,16 @@
+<img src="https://github.com/uvic-aurora/WTT/blob/master/src/wtt-demo/screenshots/screenshots.gif" width="850" alt="DemoScreenshot" />
+
 Wavelet Transform Toolkit (WTT)
 =========================
 
 [![Build Status](https://travis-ci.com/uvic-aurora/WTT.svg?branch=master)](https://travis-ci.com/uvic-aurora/WTT)
 
-Wavelet Transform Toolkit (WTT) consists of a C++ header-only library for computing and defining multi-level lifted wavelet transforms on 3-D meshes. In addition to the library, the author has implemented some application programs for demonstrating wavelet-based applications (e.g., computing wavelet transforms, wavelet denoising, and wavelet compression).
+Wavelet Transform Toolkit (WTT) consists of a C++ header-only library for computing and defining multi-level lifted wavelet transforms on 3-D meshes. In addition to the library, the author has implemented a Qt- and OpenGL-based demo program for viewing the result of computing wavelet transforms on a 3-D mesh and demonstrating wavelet-based compression and denoising. Threaded rendering has been employed to provide a smooth user experience. Also, WTT consists of several command-line programs for simple use cases (e.g., computing wavelet transforms, wavelet denoising, and wavelet compression).
 
 The author Shengyang Wei can be reached at the following email address:
 
 * shengyangwei@protonmail.com
+* Github: [sywe1](https://github.com/sywe1)
 
 Dependency
 ------------
@@ -17,6 +20,13 @@ A complier with C++ 17 support is needed to compile WTT. The following versions 
 * g++ (7.2+) or clang++ (5+)
 * CGAL (4.2+)
 * Boost (1.58+)
+
+Since the demo is based on Qt and OpenGL, they are needed to build the demo program of WTT. The following versions of Qt and OpenGL have been verified to work with WTT:
+
+* Qt (5.9+)
+* OpenGL (3.3+)
+
+In case the demo program is not needed, users could set the cmake option `BUILD_DEMO` to `OFF` (default: `ON`) to skip building the demo while running the following installation command. In this case, Qt and OpenGL are no longer need to be installed.
 
 Installation
 ------------
@@ -29,6 +39,17 @@ To install WTT with CMake, use the command sequence:
 cmake -H$TOP_DIR -B$BUILD_DIR -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR
 cmake --build $BUILD_DIR --target install
 ```
+
+Usage of the Demo Program
+-----------------------------
+
+After a successful installation, the demo program can be found in `$INSTALL_DIR/bin`. To launch the program, users could run the following command:
+
+```shell
+./wtt_demo
+```
+
+The demo is designed to provide an instant view of computing the forward wavelet transform and inverse wavelet transform. Both Loop and Butterfly wavelet transforms are supported. Users could also try wavelet compression and denoising by performing a forward wavelet transform, modifying wavelet coefficients, and performing an inverse wavelet transform. The buttons on the bottom panel provide these wavelet related functionalities, e.g., loading a mesh, computing a forward and inverse wavelet transform, and filtering wavelet coefficients. The buttons on the left panel are used to control the OpenGL view and switch shaders. When the mouse hovers on a button, a helper text will be displayed to illustrate the action of the button.
 
 Usage of Command-line Programs
 ------------------------------

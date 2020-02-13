@@ -1,0 +1,46 @@
+QWidget#msg_body
+{
+  background-color: #242424;
+}
+
+
+QLineEdit#user_input {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 20pt;
+  border: none;
+  text-align: center;
+  color:#DFDFDF;
+  background-color: #1A1A1A;
+}
+
+QLabel#description
+{
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14pt;
+  border: none;
+  text-align: center;
+  color:#DFDFDF;
+}
+
+QPushButton#accept_button
+{
+  font-family: Roboto;
+  font-weight: 450;
+  font-size: 12pt;
+  border: none;
+  background-color: #3F51B5;
+  color:#FFFFFF;
+}
+
+QPushButton#reject_button
+{
+  font-family: Roboto;
+  font-weight: 450;
+  font-size: 12pt;
+  border: none;
+  background-color: none;
+  color:#FFFFFF;
+}
+

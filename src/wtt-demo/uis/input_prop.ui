@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="5.0">
+  <class>InputProp</class>
+  <widget class="QWidget" name="InputProp">
+    <layout class="QVBoxLayout">
+      <item>
+        <spacer>
+          <property name="orientation">
+            <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+            <size>
+              <width>1</width>
+              <height>1</height>
+            </size>
+          </property>
+        </spacer>
+      </item>
+      <item>
+        <layout class="QHBoxLayout">
+          <item>
+            <spacer>
+              <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+                <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+                <size>
+                  <width>1</width>
+                  <height>1</height>
+                </size>
+              </property>
+            </spacer>
+          </item>
+          <item>
+            <widget class="QWidget" name="msg_body">
+              <layout class="QVBoxLayout">
+                <property name="leftMargin">
+                  <number>10</number>
+                </property>
+                <property name="rightMargin">
+                  <number>10</number>
+                </property>
+                <property name="topMargin">
+                  <number>10</number>
+                </property>
+                <property name="bottomMargin">
+                  <number>10</number>
+                </property>
+                <property name="spacing">
+                  <number>10</number>
+                </property>
+                <item>
+                  <layout class="QVBoxLayout" name="content_layout">
+                    <property name="spacing">
+                      <number>10</number>
+                    </property>
+                    <property name="alignment">
+                      <enum>Qt::AlignCenter</enum>
+                    </property>
+                    <item>
+                      <widget class="QLabel" name="description"/>
+                    </item>
+                    <item>
+                      <layout class="QHBoxLayout" name="selection_layout">
+                        <property name="spacing">
+                          <number>20</number>
+                        </property>
+                        <item>
+                          <widget class="QLineEdit" name="user_input">
+                          </widget>
+                        </item>
+                      </layout>
+                    </item>
+                  </layout>
+                </item>
+                <item>
+                  <layout class="QHBoxLayout" name="buttons_layout">
+                    <property name="alignment">
+                      <enum>Qt::AlignCenter</enum>
+                    </property>
+                    <item>
+                      <widget class="QPushButton" name="reject_button">
+                      </widget>
+                    </item>
+                    <item>
+                      <widget class="QPushButton" name="accept_button">
+                      </widget>
+                    </item>
+                  </layout>
+                </item>
+              </layout>
+            </widget>
+          </item>
+          <item>
+            <spacer>
+              <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+                <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+                <size>
+                  <width>1</width>
+                  <height>1</height>
+                </size>
+              </property>
+            </spacer>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <spacer>
+          <property name="orientation">
+            <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+            <size>
+              <width>1</width>
+              <height>1</height>
+            </size>
+          </property>
+        </spacer>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault margin="0" spacing="0"/>
+  <resources/>
+  <connections/>
+</ui>

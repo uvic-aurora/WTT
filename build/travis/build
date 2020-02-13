@@ -6,6 +6,12 @@ panic()
 	echo "FATAL ERROR: $@"
 	exit 1
 }
+export Qt5Widgets_DIR=/usr/local/opt/qt/lib/cmake/Qt5Widgets
+export Qt5Test_DIR=/usr/local/opt/qt/lib/cmake/Qt5Test
+export Qt5Core_DIR=/usr/local/opt/qt/lib/cmake/Qt5Core
+export Qt5_DIR=/usr/local/opt/qt/lib/cmake
+export Qt5Concurrent_DIR=/usr/local/opt/qt/lib/cmake/Qt5Concurrent
+export Qt5Gui_DIR=/usr/local/opt/qt/lib/cmake/Qt5Gui
 
 install_dir="/tmp/WTT"
 

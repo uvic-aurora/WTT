@@ -1,0 +1,19 @@
+QLabel#denoise_icon,compress_icon,reset_icon,openfile_icon,topology_icon,fwt_icon,iwt_icon,type_icon
+{
+  border:none;
+}
+
+QLabel#type_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 60px;
+  border: none;
+  text-align: center;
+  color:#000000;
+}
+QPushButton
+{
+  border: none;
+  background-color: none;
+}
+
