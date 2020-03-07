@@ -49,7 +49,31 @@ After a successful installation, the demo program can be found in `$INSTALL_DIR/
 ./wtt_demo
 ```
 
-The demo is designed to provide an instant view of computing the forward wavelet transform and inverse wavelet transform. Both Loop and Butterfly wavelet transforms are supported. Users could also try wavelet compression and denoising by performing a forward wavelet transform, modifying wavelet coefficients, and performing an inverse wavelet transform. The buttons on the bottom panel provide these wavelet related functionalities, e.g., loading a mesh, computing a forward and inverse wavelet transform, and filtering wavelet coefficients. The buttons on the left panel are used to control the OpenGL view and switch shaders. When the mouse hovers on a button, a helper text will be displayed to illustrate the action of the button.
+The demo is designed to provide an instant view of computing the forward wavelet transform and inverse wavelet transform. Both Loop and Butterfly wavelet transforms are supported. Users could also try wavelet compression and denoising by performing a forward wavelet transform, modifying wavelet coefficients, and performing an inverse wavelet transform.
+
+The wavelet transforms or wavelet applications can be performed by sequentially clicking the buttons, specifically the buttons in the bottom row. When the mouse hovers on a button, a helper text will be displayed to illustrate the action of the button. A detailed description of the buttons is given in what follows.
+
+The bottom buttons are grouped into three columns:
+
+1. The first column consists of two mesh-related buttons. The first one (a folder icon) is the loading mesh button. After clicking it, a dialog pops up for you to select a mesh in your local filesystem for the wavelet transform. The second one (a circular arrow) is the resetting button. Clicking it will reset the loaded mesh to its original state.
+
+2. The second column consists of three wavelet-related buttons. These buttons will become valid after a mesh is loaded. The first button (a circle icon) is used to select a wavelet transform scheme. After clicking it, a dialog will pop up for selecting either Butterly or Loop. Once a scheme is selected, a letter will appear in the circle, indicating the current wavelet transform scheme. The second button (a left arrow) is the inverse wavelet transform button. Clicking it performs inverse wavelet transform on the mesh. The third button (a right arrow) is the forward wavelet transform button. Clicking it performs forward wavelet transform on the mesh. Both the forward and inverse transform buttons are invalid until a scheme is selected.
+
+3. The third column consists of two wavelet coefficients modification buttons. The two buttons are invalid until there are available wavelet coefficients. Specifically, the two buttons will become valid only if a forward wavelet transform is computed. Clicking the first button (compression button) filters the wavelet coefficients by their magnitude. A dialog prompts on click for the user to set a percentage to the filter. The wavelet coefficients with larger magnitude within the given percentage are preserved, and the others are dropped. Clicking the second button (denoising button) filters the wavelet coefficients by levels. A dialog prompts on click for the user to set a level to the filter. The wavelet coefficients in and above the given level are dropped.
+
+* To perform wavelet compression on a mesh, the user could click the following buttons in turn:
+  `load mesh button`, `forward transform button`, `compression button`, `inverse transform button`
+
+* To perform wavelet denoising on a mesh, the user could click the following buttons in turn:
+  `load mesh button`, `forward transform button`, `denoising button`, `inverse transform button`
+
+The buttons on the left are designed for view control. Descriptions of the buttons from top to bottom are given in turn as below:
+
+1. Reset camera to the original state.
+2. Toggle edge display.
+3. Set smooth shading to OpenGL shader.
+4. Set flat shading to OpenGL shader.
+5. Take a screenshot of the current scene.
 
 Usage of Command-line Programs
 ------------------------------
